@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Me | Professional Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .whatsapp-btn {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-btn:hover {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+    }
+    #contact-form input,
+    #contact-form textarea {
+      transition: all 0.3s ease;
+    }
+    #contact-form input:focus,
+    #contact-form textarea:focus {
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-[#0f172a] text-white font-sans overflow-x-hidden">
+
+  <!-- 3D Background Canvas -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full py-4 px-6 glass-card z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">YourName</a>
+      <div class="hidden md:flex gap-8">
+        <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+        <a href="work.html" class="hover:text-blue-400 transition">Work</a>
+        <a href="services.html" class="hover:text-blue-400 transition">Services</a>
+        <a href="hire-me.html" class="text-blue-400 font-medium">Hire Me</a>
+      </div>
+      <a href="#contact" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+        Contact Now
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center pt-20 px-6 relative">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-blue-500/20 to-pink-500/20 filter blur-3xl opacity-70 floating"></div>
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          <span class="gradient-text">Hire Me</span> for Your Next Project
+        </h1>
+        <p class="text-xl text-white/80 mb-8">
+          Let's collaborate to bring your digital vision to life with cutting-edge solutions and expert craftsmanship.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+            Get in Touch
+          </a>
+          <a href="https://wa.me/+919801348784?text=Hi%20there,%20I'm%20interested%20in%20your%20services" 
+             target="_blank"
+             class="px-8 py-3 bg-[#25D366] text-white rounded-full font-medium whatsapp-btn transition-all flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            WhatsApp Me
+          </a>
+        </div>
+      </div>
+      <div class="relative hidden md:block">
+        <div id="3d-portrait-container" class="w-full h-96"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 text-center">
+        What I <span class="gradient-text">Offer</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Service 1 -->
+        <div class="glass-card rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="text-blue-400 text-4xl mb-4">💻</div>
+          <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+          <p class="text-white/80 mb-6">
+            Custom websites and applications built with modern technologies for optimal performance.
+          </p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Responsive Design
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              eCommerce Solutions
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              CMS Integration
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="glass-card rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="text-pink-400 text-4xl mb-4">📈</div>
+          <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+          <p class="text-white/80 mb-6">
+            Data-driven strategies to increase your online visibility and customer engagement.
+          </p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              SEO Optimization
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Social Media Management
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              PPC Campaigns
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="glass-card rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="text-purple-400 text-4xl mb-4">⚙️</div>
+          <h3 class="text-2xl font-bold mb-4">Custom Software</h3>
+          <p class="text-white/80 mb-6">
+            Tailored solutions to streamline your business operations and workflows.
+          </p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Business Automation
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              SaaS Development
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              API Integrations
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-2xl p-8 md:p-12 text-center">
+        <h3 class="text-2xl md:text-3xl font-bold mb-6">Why Work With Me?</h3>
+        <p class="text-white/80 max-w-3xl mx-auto mb-8">
+          I combine technical expertise with creative problem-solving to deliver exceptional results. With a focus on clear communication and on-time delivery, I ensure your project exceeds expectations.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <div class="text-5xl font-bold text-blue-400 mb-2">100%</div>
+            <div class="text-white/80">Client Satisfaction</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold text-pink-400 mb-2">50+</div>
+            <div class="text-white/80">Projects Completed</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold text-purple-400 mb-2">24/7</div>
+            <div class="text-white/80">Support Available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-gradient-to-b from-[#0f172a] to-[#020617]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 text-center">
+        Let's <span class="gradient-text">Connect</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+          <p class="text-white/80 mb-8">
+            Have a project in mind or want to discuss how I can help your business? Reach out through any of these channels:
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl mt-1">
+                ✉️
+              </div>
+              <div>
+                <h4 class="font-bold">Email</h4>
+                <a href="monussiingh@gmail.com" class="text-blue-400 hover:underline">monussiingh@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xl mt-1">
+                💬
+              </div>
+              <div>
+                <h4 class="font-bold">WhatsApp</h4>
+                <a href="https://wa.me/+919801348784?text=Hi%20there,%20I'm%20interested%20in%20your%20services" 
+                   target="_blank"
+                   class="text-green-400 hover:underline">
+                  +91 9801348784
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mt-1">
+                📍
+              </div>
+              <div>
+                <h4 class="font-bold">Location</h4>
+                <p class="text-white/80">Noida, IN</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-12">
+            <h4 class="font-bold mb-4">Follow Me</h4>
+            <div class="flex gap-4">
+            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
+              <span class="fab fa-linkedin-in text-lg"></span>
+            </a>
+            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-pink-500/20 transition">
+              <span class="fab fa-instagram text-lg"></span>
+            </a>
+            <a href="https://github.com/Monu1432" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-github"></span>
+            </a>
+            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-twitter text-lg"></span>
+            </a>
+          </div>
+          </div>
+        </div>
+        
+        <form 
+  class="glass-card rounded-xl p-8" 
+  action="https://formsubmit.co/monussiingh@gmail.com" 
+  method="POST"
+>
+  <!-- Add these hidden form fields for better functionality -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New message from your website">
+  <input type="hidden" name="_template" value="table">
+  <!--input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"-->
+  
+  <div class="mb-6">
+    <label for="name" class="block mb-2">Your Name</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+  
+  <div class="mb-6">
+    <label for="email" class="block mb-2">Email Address</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+  <div class="mb-6">
+    <label for="contact" class="block mb-2">Contact</label>
+    <input 
+      type="contact" 
+      id="contact" 
+      name="contact" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+  
+  <div class="mb-6">
+    <label for="message" class="block mb-2">Your Message</label>
+    <textarea 
+      id="message" 
+      name="message" 
+      rows="4" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    ></textarea>
+  </div>
+  
+  <button 
+    type="submit" 
+    class="w-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg px-6 py-3 font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all"
+  >
+    Send Message
+  </button>
+</form>
+     
+
+          
+          <div class="mt-6 text-center">
+            <p class="text-sm text-white/60">Or contact me directly via:</p>
+            <a href="https://wa.me/+919801348784?text=Hi%20there,%20I'm%20interested%20in%20your%20services" 
+               target="_blank"
+               class="inline-flex items-center mt-2 px-6 py-2 bg-[#25D366] text-white rounded-lg font-medium whatsapp-btn transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="mr-2">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              WhatsApp Chat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 text-center">
+        Client <span class="gradient-text">Testimonials</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="glass-card rounded-2xl p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-xl mr-4">👨‍💼</div>
+            <div>
+              <h4 class="font-bold">Michael R.</h4>
+              <p class="text-sm text-white/60">CEO, TechStart Inc.</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic mb-4">
+            "Working with this developer was a game-changer for our eCommerce platform. The attention to detail and technical expertise resulted in a 240% increase in revenue."
+          </p>
+          <div class="flex text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="glass-card rounded-2xl p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center text-xl mr-4">👩‍💼</div>
+            <div>
+              <h4 class="font-bold">Sarah L.</h4>
+              <p class="text-sm text-white/60">Marketing Director</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic mb-4">
+            "The custom dashboard they built saves us 15 hours per week in reporting. It's become an indispensable tool for our marketing team."
+          </p>
+          <div class="flex text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="glass-card rounded-2xl p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-xl mr-4">👨‍💻</div>
+            <div>
+              <h4 class="font-bold">David K.</h4>
+              <p class="text-sm text-white/60">Startup Founder</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic mb-4">
+            "Exceptional communication and delivery. They understood our vision and executed it perfectly, delivering ahead of schedule."
+          </p>
+          <div class="flex text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-6 bg-gradient-to-b from-[#020617] to-[#0f172a]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+      <p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
+        Let's discuss how I can help bring your ideas to life with innovative digital solutions.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+          Contact Me
+        </a>
+        <a href="https://wa.me/+919801348784?text=Hi%20there,%20I'm%20interested%20in%20your%20services" 
+           target="_blank"
+           class="px-8 py-4 glass-card rounded-full font-medium hover:bg-green-500/20 transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          WhatsApp Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-[#020617]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 gradient-text">YourName</h3>
+          <p class="text-white/80">
+            Creating digital experiences that drive results and transform businesses.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Services</h4>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="#" class="hover:text-blue-400 transition">Web Development</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Digital Marketing</a></li>
+            <li><a href="#" class="hover:text-purple-400 transition">Custom Software</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="index.html" class="hover:text-blue-400 transition">Home</a></li>
+            <li><a href="work.html" class="hover:text-blue-400 transition">Portfolio</a></li>
+            <li><a href="services.html" class="hover:text-blue-400 transition">Services</a></li>
+            <li><a href="hire-me.html" class="hover:text-blue-400 transition">Hire Me</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <div class="flex gap-4">
+            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
+              <span class="fab fa-linkedin-in text-lg"></span>
+            </a>
+            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-pink-500/20 transition">
+              <span class="fab fa-instagram text-lg"></span>
+            </a>
+            <a href="https://github.com/Monu1432" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-github"></span>
+            </a>
+            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-twitter text-lg"></span>
+            </a>
+          </div>
+          <ul class="space-y-2 text-white/80">
+            <li>monussiingh@gmail.com</li>
+            <li>+91 9801348784</li>
+            <li>Noida, IN</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 text-center text-white/50">
+        <p>© 2025 NovaJPS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Three.js Background
+    const bgCanvas = document.getElementById('bgCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas: bgCanvas,
+      antialias: true,
+      alpha: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Create floating geometry
+    const geometries = [
+      new THREE.IcosahedronGeometry(1, 0),
+      new THREE.TorusGeometry(0.8, 0.3, 16, 32),
+      new THREE.OctahedronGeometry(1, 0),
+      new THREE.BoxGeometry(1, 1, 1)
+    ];
+
+    const materials = [
+      new THREE.MeshBasicMaterial({ 
+        color: 0x3b82f6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      }),
+      new THREE.MeshBasicMaterial({ 
+        color: 0xec4899,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      }),
+      new THREE.MeshBasicMaterial({ 
+        color: 0x8b5cf6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      })
+    ];
+
+    // Create multiple floating shapes
+    const shapes = [];
+    const shapeCount = 12;
+    
+    for(let i = 0; i < shapeCount; i++) {
+      const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+      const material = materials[Math.floor(Math.random() * materials.length)].clone();
+      
+      const shape = new THREE.Mesh(geometry, material);
+      shape.position.x = (Math.random() - 0.5) * 30;
+      shape.position.y = (Math.random() - 0.5) * 30;
+      shape.position.z = (Math.random() - 0.5) * 30;
+      shape.rotation.x = Math.random() * Math.PI;
+      shape.rotation.y = Math.random() * Math.PI;
+      
+      // Random size
+      const size = Math.random() * 0.5 + 0.5;
+      shape.scale.set(size, size, size);
+      
+      // Animation properties
+      shape.userData = {
+        speed: Math.random() * 0.002 + 0.001,
+        rotationSpeed: Math.random() * 0.01 + 0.005,
+        amplitude: Math.random() * 2 + 1,
+        startY: shape.position.y
+      };
+      
+      scene.add(shape);
+      shapes.push(shape);
+    }
+
+    camera.position.z = 5;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Animate shapes
+      const time = Date.now() * 0.001;
+      shapes.forEach(shape => {
+        shape.rotation.x += shape.userData.rotationSpeed;
+        shape.rotation.y += shape.userData.rotationSpeed;
+        
+        // Floating animation
+        shape.position.y = shape.userData.startY + Math.sin(time * shape.userData.speed) * shape.userData.amplitude;
+      });
+      
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 3D Portrait Section
+    const portraitContainer = document.getElementById('3d-portrait-container');
+    
+    if (portraitContainer) {
+      const portraitScene = new THREE.Scene();
+      const portraitCamera = new THREE.PerspectiveCamera(75, portraitContainer.clientWidth / portraitContainer.clientHeight, 0.1, 1000);
+      const portraitRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      
+      portraitRenderer.setSize(portraitContainer.clientWidth, portraitContainer.clientHeight);
+      portraitRenderer.setClearColor(0x000000, 0);
+      portraitContainer.appendChild(portraitRenderer.domElement);
+      
+      // Add lighting
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      portraitScene.add(ambientLight);
+      
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(1, 1, 1);
+      portraitScene.add(directionalLight);
+      
+      // Create a simple 3D head model (simplified for this example)
+      const headGeometry = new THREE.SphereGeometry(1, 32, 32);
+      const headMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0x8a5cf6,
+        specular: 0x111111,
+        shininess: 30,
+        wireframe: false
+      });
+      const head = new THREE.Mesh(headGeometry, headMaterial);
+      portraitScene.add(head);
+      
+      // Add glasses (as an example feature)
+      const glassesGeometry = new THREE.TorusGeometry(0.4, 0.05, 16, 32);
+      const glassesMaterial = new THREE.MeshBasicMaterial({ color: 0x333333 });
+      
+      const leftGlass = new THREE.Mesh(glassesGeometry, glassesMaterial);
+      leftGlass.position.x = -0.3;
+      leftGlass.position.z = 0.9;
+      leftGlass.rotation.y = Math.PI / 2;
+      portraitScene.add(leftGlass);
+      
+      const rightGlass = new THREE.Mesh(glassesGeometry, glassesMaterial);
+      rightGlass.position.x = 0.3;
+      rightGlass.position.z = 0.9;
+      rightGlass.rotation.y = Math.PI / 2;
+      portraitScene.add(rightGlass);
+      
+      // Add bridge between glasses
+      const bridgeGeometry = new THREE.BoxGeometry(0.4, 0.05, 0.05);
+      const bridge = new THREE.Mesh(bridgeGeometry, glassesMaterial);
+      bridge.position.z = 0.9;
+      portraitScene.add(bridge);
+      
+      portraitCamera.position.z = 2.5;
+      
+      // Animation for portrait
+      function animatePortrait() {
+        requestAnimationFrame(animatePortrait);
+        
+        head.rotation.y += 0.005;
+        leftGlass.rotation.y += 0.005;
+        rightGlass.rotation.y += 0.005;
+        bridge.rotation.y += 0.005;
+        
+        portraitRenderer.render(portraitScene, portraitCamera);
+      }
+      
+      animatePortrait();
+      
+      // Handle portrait container resize
+      window.addEventListener('resize', () => {
+        portraitCamera.aspect = portraitContainer.clientWidth / portraitContainer.clientHeight;
+        portraitCamera.updateProjectionMatrix();
+        portraitRenderer.setSize(portraitContainer.clientWidth, portraitContainer.clientHeight);
+      });
+    }
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Simple validation
+        if (!name || !email || !message) {
+          alert('Please fill in all required fields');
+          return;
+        }
+        
+        // Here you would typically send the form data to a server
+        // For this example, we'll just show a success message
+        alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+        
+        // Reset form
+        contactForm.reset();
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // GSAP animations for sections
+    gsap.utils.toArray('section').forEach((section, index) => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: index * 0.1
+      });
+    });
+  </script>
+</body>
+</html>

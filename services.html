@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Digital Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    .service-card-3d {
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    #service-container {
+      perspective: 1000px;
+    }
+    #floating-orb {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body class="bg-[#0f172a] text-white font-sans overflow-x-hidden">
+
+  <!-- 3D Background Canvas -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full py-4 px-6 glass-card z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">NovaJPS</a>
+      <div class="hidden md:flex gap-8">
+        <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+        <a href="work.html" class="hover:text-blue-400 transition">Work</a>
+        <a href="services.html" class="text-blue-400 font-medium">Services</a>
+        <a href="index.html#contact" class="hover:text-blue-400 transition">Contact</a>
+      </div>
+      <a href="hire.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center pt-20 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          <span class="gradient-text">Digital Solutions</span><br>
+          That Drive Growth
+        </h1>
+        <p class="text-xl text-white/80 mb-8 max-w-2xl">
+          We combine cutting-edge technology with strategic thinking to deliver exceptional results for your business.
+        </p>
+        <a href="hire.html" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all mr-4">
+          Hire Me
+        </a>
+        <a href="exp.html" class="inline-block px-8 py-3 glass-card rounded-full font-medium hover:bg-white/10 transition">
+          Explore Services
+        </a>
+      </div>
+      <div class="relative hidden md:block">
+        <div id="floating-orb" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-blue-500/20 to-pink-500/20 filter blur-3xl opacity-70"></div>
+        <div id="service-container" class="relative w-full h-96">
+          <!-- 3D Service Card will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4 text-center">Our <span class="gradient-text">Services</span></h2>
+      <p class="text-xl text-white/80 mb-16 text-center max-w-3xl mx-auto">
+        Comprehensive digital solutions tailored to your business needs
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Service 1 - Web Development -->
+        <div class="service-card-3d glass-card rounded-2xl overflow-hidden p-8 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 h-full">
+          <div class="text-blue-400 text-5xl mb-6">💻</div>
+          <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+          <p class="text-white/80 mb-6">
+            Custom websites and web applications built for performance, scalability, and user experience.
+          </p>
+          <ul class="space-y-3 text-white/80 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Custom Website Development
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              eCommerce Solutions
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              WordPress Optimization
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Web App Development
+            </li>
+          </ul>
+          <a href="#contact" class="inline-block px-6 py-2 border border-blue-400/30 text-blue-400 rounded-lg font-medium hover:bg-blue-400/10 transition">
+            Learn More
+          </a>
+        </div>
+
+        <!-- Service 2 - Digital Marketing -->
+        <div class="service-card-3d glass-card rounded-2xl overflow-hidden p-8 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 h-full">
+          <div class="text-pink-400 text-5xl mb-6">📈</div>
+          <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+          <p class="text-white/80 mb-6">
+            Data-driven marketing strategies to increase visibility, engagement, and conversions.
+          </p>
+          <ul class="space-y-3 text-white/80 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              SEO Optimization
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Social Media Marketing
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              PPC Advertising
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Content Strategy
+            </li>
+          </ul>
+          <a href="#contact" class="inline-block px-6 py-2 border border-pink-400/30 text-pink-400 rounded-lg font-medium hover:bg-pink-400/10 transition">
+            Learn More
+          </a>
+        </div>
+
+        <!-- Service 3 - Custom Software -->
+        <div class="service-card-3d glass-card rounded-2xl overflow-hidden p-8 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 h-full">
+          <div class="text-purple-400 text-5xl mb-6">⚙️</div>
+          <h3 class="text-2xl font-bold mb-4">Custom Software</h3>
+          <p class="text-white/80 mb-6">
+            Tailored software solutions to streamline operations and drive business growth.
+          </p>
+          <ul class="space-y-3 text-white/80 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              SaaS Development
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Business Automation
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              API Integrations
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Database Solutions
+            </li>
+          </ul>
+          <a href="#contact" class="inline-block px-6 py-2 border border-purple-400/30 text-purple-400 rounded-lg font-medium hover:bg-purple-400/10 transition">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 px-6 bg-gradient-to-b from-[#0f172a] to-[#020617]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4 text-center">Our <span class="gradient-text">Process</span></h2>
+      <p class="text-xl text-white/80 mb-16 text-center max-w-3xl mx-auto">
+        A proven methodology to deliver exceptional results
+      </p>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="relative glass-card rounded-2xl p-8 text-center">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
+          <h3 class="text-xl font-bold mb-4 mt-4">Discovery</h3>
+          <p class="text-white/80">
+            We analyze your business needs and goals to create a tailored strategy.
+          </p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="relative glass-card rounded-2xl p-8 text-center">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
+          <h3 class="text-xl font-bold mb-4 mt-4">Design</h3>
+          <p class="text-white/80">
+            Crafting user-centric designs that align with your brand identity.
+          </p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="relative glass-card rounded-2xl p-8 text-center">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
+          <h3 class="text-xl font-bold mb-4 mt-4">Development</h3>
+          <p class="text-white/80">
+            Building robust solutions with clean, maintainable code.
+          </p>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="relative glass-card rounded-2xl p-8 text-center">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-xl">4</div>
+          <h3 class="text-xl font-bold mb-4 mt-4">Delivery</h3>
+          <p class="text-white/80">
+            Thorough testing and deployment with ongoing support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto glass-card rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
+      <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Let's discuss how we can help you achieve your digital goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="schedule.html" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+          Schedule a Call
+        </a>
+        <a href="mailto:contact@yourdomain.com" class="px-8 py-3 glass-card rounded-full font-medium hover:bg-white/10 transition">
+          Email Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-[#020617]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 gradient-text">Digital Agency</h3>
+          <p class="text-white/80">
+            Creating digital experiences that drive results and transform businesses.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Services</h4>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="#" class="hover:text-blue-400 transition">Web Development</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Digital Marketing</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Custom Software</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Company</h4>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="about.html" class="hover:text-blue-400 transition">About Us</a></li>
+            <li><a href="work.html" class="hover:text-blue-400 transition">Our Work</a></li>
+            <li><a href="blog.html" class="hover:text-blue-400 transition">Blog</a></li>
+            <li><a href="careers.html" class="hover:text-blue-400 transition">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Connect</h4>
+<div class="flex gap-4">
+            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
+              <span class="fab fa-linkedin-in text-lg"></span>
+            </a>
+            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-pink-500/20 transition">
+              <span class="fab fa-instagram text-lg"></span>
+            </a>
+            <a href="https://github.com/Monu1432" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-github"></span>
+            </a>
+            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-twitter text-lg"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 text-center text-white/50">
+        <p>© 2025 NovaJPS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Three.js Background
+    const bgCanvas = document.getElementById('bgCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas: bgCanvas,
+      antialias: true,
+      alpha: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Create floating geometry
+    const geometries = [
+      new THREE.IcosahedronGeometry(1, 0),
+      new THREE.TorusGeometry(0.8, 0.3, 16, 32),
+      new THREE.OctahedronGeometry(1, 0),
+      new THREE.BoxGeometry(1, 1, 1)
+    ];
+
+    const materials = [
+      new THREE.MeshBasicMaterial({ 
+        color: 0x3b82f6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      }),
+      new THREE.MeshBasicMaterial({ 
+        color: 0xec4899,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      }),
+      new THREE.MeshBasicMaterial({ 
+        color: 0x8b5cf6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      })
+    ];
+
+    // Create multiple floating shapes
+    const shapes = [];
+    const shapeCount = 12;
+    
+    for(let i = 0; i < shapeCount; i++) {
+      const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+      const material = materials[Math.floor(Math.random() * materials.length)].clone();
+      
+      const shape = new THREE.Mesh(geometry, material);
+      shape.position.x = (Math.random() - 0.5) * 30;
+      shape.position.y = (Math.random() - 0.5) * 30;
+      shape.position.z = (Math.random() - 0.5) * 30;
+      shape.scale.setScalar(Math.random() * 3 + 1);
+      shape.userData = {
+        speed: Math.random() * 0.002 + 0.001,
+        rotationSpeed: Math.random() * 0.005 + 0.002,
+        direction: new THREE.Vector3(
+          Math.random() - 0.5,
+          Math.random() - 0.5,
+          Math.random() - 0.5
+        ).normalize()
+      };
+      scene.add(shape);
+      shapes.push(shape);
+    }
+
+    // Add floating particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 1500;
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for(let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 40;
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.05,
+      color: 0x3b82f6,
+      transparent: true,
+      opacity: 0.6
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 20;
+
+    // 3D Service Card in Hero
+    const serviceContainer = document.getElementById('service-container');
+    const serviceScene = new THREE.Scene();
+    const serviceCamera = new THREE.PerspectiveCamera(75, serviceContainer.clientWidth/serviceContainer.clientHeight, 0.1, 1000);
+    const serviceRenderer = new THREE.WebGLRenderer({ alpha: true });
+    serviceRenderer.setSize(serviceContainer.clientWidth, serviceContainer.clientHeight);
+    serviceContainer.appendChild(serviceRenderer.domElement);
+
+    const serviceGeometry = new THREE.BoxGeometry(3, 2, 0.2);
+    const edges = new THREE.EdgesGeometry(serviceGeometry);
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.8 });
+    const serviceEdges = new THREE.LineSegments(edges, lineMaterial);
+    
+    const serviceMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0x0f172a,
+      transparent: true,
+      opacity: 0.7,
+      side: THREE.DoubleSide
+    });
+    
+    const serviceCube = new THREE.Mesh(serviceGeometry, serviceMaterial);
+    serviceScene.add(serviceCube);
+    serviceScene.add(serviceEdges);
+    
+    // Add floating dots inside the service card
+    const dotGeometry = new THREE.SphereGeometry(0.05, 8, 8);
+    const dotMaterial = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
+    
+    for (let i = 0; i < 20; i++) {
+      const dot = new THREE.Mesh(dotGeometry, dotMaterial);
+      dot.position.x = (Math.random() - 0.5) * 2.8;
+      dot.position.y = (Math.random() - 0.5) * 1.8;
+      dot.position.z = (Math.random() - 0.5) * 0.15;
+      serviceScene.add(dot);
+    }
+    
+    serviceCamera.position.z = 5;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Animate background shapes
+      shapes.forEach(shape => {
+        shape.position.addScaledVector(shape.userData.direction, shape.userData.speed);
+        shape.rotation.x += shape.userData.rotationSpeed;
+        shape.rotation.y += shape.userData.rotationSpeed;
+        
+        // Bounce off imaginary walls
+        if (Math.abs(shape.position.x) > 25) shape.userData.direction.x *= -1;
+        if (Math.abs(shape.position.y) > 25) shape.userData.direction.y *= -1;
+        if (Math.abs(shape.position.z) > 25) shape.userData.direction.z *= -1;
+      });
+      
+      // Slowly rotate particles
+      particlesMesh.rotation.x += 0.0003;
+      particlesMesh.rotation.y += 0.0002;
+      
+      // Animate service card
+      serviceCube.rotation.x += 0.005;
+      serviceCube.rotation.y += 0.007;
+      serviceEdges.rotation.copy(serviceCube.rotation);
+      
+      renderer.render(scene, camera);
+      serviceRenderer.render(serviceScene, serviceCamera);
+    }
+
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      
+      serviceCamera.aspect = serviceContainer.clientWidth / serviceContainer.clientHeight;
+      serviceCamera.updateProjectionMatrix();
+      serviceRenderer.setSize(serviceContainer.clientWidth, serviceContainer.clientHeight);
+    });
+
+    // Service card hover effects
+    const serviceCards = document.querySelectorAll('.service-card-3d');
+    
+    serviceCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+      
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.5s ease';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 1s ease';
+        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // GSAP animations
+    gsap.from('nav', { 
+      opacity: 0, 
+      y: -50, 
+      duration: 1, 
+      ease: 'power3.out' 
+    });
+    
+    gsap.from('section', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaJPS | Digital Solutions Expert</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    .service-card { perspective: 1000px; }
+    .preserve-3d { transform-style: preserve-3d; }
+    .backface-hidden { backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+    .gradient-text { background: linear-gradient(90deg, #3b82f6, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-[#0f172a] text-white font-sans overflow-x-hidden">
+  <!-- 3D Background Canvas -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
+  
+  <!-- Navigation -->
+  <nav class="fixed w-full py-6 px-8 flex justify-between items-center glass-card z-50">
+    <div class="text-2xl font-bold gradient-text">Novajps</div>
+    <div class="hidden md:flex gap-8">
+      <a href="services.html" class="hover:text-blue-400 transition">Services</a>
+      <a href="work.html" class="hover:text-blue-400 transition">Work</a>
+      <a href="#testimonials" class="hover:text-blue-400 transition">Clients</a>
+      <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+    <button class="md:hidden">☰</button>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 pt-24">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20">
+      <div class="relative z-10">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Manoranjan Kumar Monu</h1>
+        <div class="text-2xl md:text-4xl font-light mb-8">
+          <span id="rotating-text"></span>
+        </div>
+        <div class="flex gap-4">
+          <button class="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all" onclick="window.location.href='hire.html'">
+            Hire Me
+          </button>
+          <button class="px-8 py-3 glass-card rounded-full font-medium hover:bg-white/20 transition-all" onclick="window.location.href='work.html'">
+            View Work
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+      <h2 class="text-4xl font-bold mb-16 text-center">Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+        <div class="service-card group">
+          <div class="relative preserve-3d group-hover:rotate-y-180 transition-transform duration-700 w-full h-96">
+            <div class="absolute backface-hidden w-full h-full glass-card rounded-xl p-8">
+              <div class="text-blue-400 text-5xl mb-4">{...}</div>
+              <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+              <p class="text-white/80">From blazing-fast custom sites to powerful eCommerce solutions</p>
+            </div>
+            <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-[#020617] rounded-xl p-8 border border-blue-500/30">
+              <ul class="space-y-2 text-white/80">
+                <li>• Custom Websites</li>
+                <li>• WordPress</li>
+                <li>• WooCommerce</li>
+                <li>• Headless CMS</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="service-card group">
+          <div class="relative preserve-3d group-hover:rotate-y-180 transition-transform duration-700 w-full h-96">
+            <div class="absolute backface-hidden w-full h-full glass-card rounded-xl p-8">
+              <div class="text-pink-400 text-5xl mb-4">📈</div>
+              <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+              <p class="text-white/80">Data-driven strategies that convert visitors to customers</p>
+            </div>
+            <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-[#020617] rounded-xl p-8 border border-pink-500/30">
+              <ul class="space-y-2 text-white/80">
+                <li>• SEO Optimization</li>
+                <li>• Social Media Ads</li>
+                <li>• Google Ads</li>
+                <li>• Conversion Funnels</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="service-card group">
+          <div class="relative preserve-3d group-hover:rotate-y-180 transition-transform duration-700 w-full h-96">
+            <div class="absolute backface-hidden w-full h-full glass-card rounded-xl p-8">
+              <div class="text-purple-400 text-5xl mb-4">⚙️</div>
+              <h3 class="text-2xl font-bold mb-4">Custom Software</h3>
+              <p class="text-white/80">Automation tools that save 20+ hours/week for clients</p>
+            </div>
+            <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-[#020617] rounded-xl p-8 border border-purple-500/30">
+              <ul class="space-y-2 text-white/80">
+                <li>• Web Applications</li>
+                <li>• SaaS Products</li>
+                <li>• Business Automation</li>
+                <li>• API Integrations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="work" class="py-20">
+      <h2 class="text-4xl font-bold mb-16 text-center">Featured Work</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="project-card relative rounded-xl overflow-hidden h-80">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+               alt="E-commerce Project" class="w-full h-full object-cover">
+          <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end opacity-0 transition-all duration-300 transform translate-y-10">
+            <h3 class="text-2xl font-bold">LuxeStore</h3>
+            <p class="text-white/80 mb-2">High-end eCommerce platform</p>
+            <div class="flex gap-2 flex-wrap">
+              <span class="text-xs px-2 py-1 bg-blue-500/20 rounded">React</span>
+              <span class="text-xs px-2 py-1 bg-blue-500/20 rounded">Node.js</span>
+              <span class="text-xs px-2 py-1 bg-blue-500/20 rounded">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card relative rounded-xl overflow-hidden h-80">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+               alt="Marketing Dashboard" class="w-full h-full object-cover">
+          <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end opacity-0 transition-all duration-300 transform translate-y-10">
+            <h3 class="text-2xl font-bold">AnalyticsPro</h3>
+            <p class="text-white/80 mb-2">Marketing dashboard SaaS</p>
+            <div class="flex gap-2 flex-wrap">
+              <span class="text-xs px-2 py-1 bg-pink-500/20 rounded">Vue.js</span>
+              <span class="text-xs px-2 py-1 bg-pink-500/20 rounded">Firebase</span>
+              <span class="text-xs px-2 py-1 bg-pink-500/20 rounded">Chart.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card relative rounded-xl overflow-hidden h-80">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+               alt="CRM System" class="w-full h-full object-cover">
+          <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end opacity-0 transition-all duration-300 transform translate-y-10">
+            <h3 class="text-2xl font-bold">ClientFlow CRM</h3>
+            <p class="text-white/80 mb-2">Custom client management system</p>
+            <div class="flex gap-2 flex-wrap">
+              <span class="text-xs px-2 py-1 bg-purple-500/20 rounded">Laravel</span>
+              <span class="text-xs px-2 py-1 bg-purple-500/20 rounded">Vue.js</span>
+              <span class="text-xs px-2 py-1 bg-purple-500/20 rounded">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20">
+      <h2 class="text-4xl font-bold mb-16 text-center">Client Testimonials</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="glass-card rounded-xl p-8">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-blue-400/20 flex items-center justify-center text-xl">👨‍💼</div>
+            <div class="ml-4">
+              <h4 class="font-bold">Michael R.</h4>
+              <p class="text-sm text-white/60">CEO, TechStart Inc.</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic">"Alex transformed our online presence. Our eCommerce revenue grew by 240% in just 6 months after he redesigned our platform."</p>
+          <div class="flex mt-4 text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card rounded-xl p-8">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-pink-400/20 flex items-center justify-center text-xl">👩‍💼</div>
+            <div class="ml-4">
+              <h4 class="font-bold">Sarah L.</h4>
+              <p class="text-sm text-white/60">Marketing Director</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic">"The custom analytics dashboard Alex built saves us 15 hours per week in reporting. It's become indispensable to our team."</p>
+          <div class="flex mt-4 text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card rounded-xl p-8">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-400/20 flex items-center justify-center text-xl">👨‍💻</div>
+            <div class="ml-4">
+              <h4 class="font-bold">David K.</h4>
+              <p class="text-sm text-white/60">Startup Founder</p>
+            </div>
+          </div>
+          <p class="text-white/80 italic">"Working with Alex was a game-changer. He understood our vision and delivered a product that exceeded our expectations."</p>
+          <div class="flex mt-4 text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <h2 class="text-4xl font-bold mb-16 text-center">Get In Touch</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
+                📍
+              </div>
+              <p>San Francisco, CA</p>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center mr-4">
+                ✉️
+              </div>
+              <p>contact@NovaJPS.com</p>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
+                📱
+              </div>
+              <p>+91 9801348784</p>
+            </div>
+          </div>
+
+          <div>
+          <h4 class="font-bold mb-4">Connect</h4>
+          <div class="flex gap-4">
+            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
+              <span class="fab fa-linkedin-in text-lg"></span>
+            </a>
+            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:bg-pink-500/20 transition">
+              <span class="fab fa-instagram text-lg"></span>
+            </a>
+            <a href="https://github.com/Monu1432" class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+              <span class="fab fa-github"></span>
+            </a>
+            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:bg-green-500/20 transition">
+              <span class="fab fa-twitter text-lg"></span>
+            </a>
+          </div>
+        </div>
+        </div>
+
+        <form 
+  class="glass-card rounded-xl p-8" 
+  action="https://formsubmit.co/monussiingh@gmail.com" 
+  method="POST"
+>
+  <!-- Add these hidden form fields for better functionality -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New message from your website">
+  <input type="hidden" name="_template" value="table">
+  <!--input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"-->
+  
+  <div class="mb-6">
+    <label for="name" class="block mb-2">Your Name</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+  
+  <div class="mb-6">
+    <label for="email" class="block mb-2">Email Address</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+
+  <div class="mb-6">
+    <label for="contact" class="block mb-2">Contact</label>
+    <input 
+      type="contact" 
+      id="contact" 
+      name="contact" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+  
+  <div class="mb-6">
+    <label for="message" class="block mb-2">Your Message</label>
+    <textarea 
+      id="message" 
+      name="message" 
+      rows="4" 
+      required
+      class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    ></textarea>
+  </div>
+  
+  <button 
+    type="submit" 
+    class="w-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg px-6 py-3 font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all"
+  >
+    Send Message
+  </button>
+</form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="glass-card mt-20 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 gradient-text">Manoranjan Kumar Monu</h3>
+          <p class="text-white/70">Digital solutions for forward-thinking businesses.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="services.html" class="hover:text-blue-400 transition">Services</a></li>
+            <li><a href="work.html" class="hover:text-blue-400 transition">Work</a></li>
+            <li><a href="#testimonials" class="hover:text-blue-400 transition">Testimonials</a></li>
+            <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-blue-400 transition">Web Development</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Digital Marketing</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Custom Software</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition">Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Newsletter</h4>
+          <p class="text-white/70 mb-4">Subscribe for tips and updates</p>
+          <div class="flex">
+            <input type="email" placeholder="Your email" class="bg-white/5 border border-white/10 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full">
+            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-lg transition">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-12 pt-8 text-center text-white/50">
+        <p>© 2025 NovaJPS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Three.js Background
+    const bgCanvas = document.getElementById('bgCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas: bgCanvas,
+      antialias: true,
+      alpha: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Particle system
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particleCount = 1500;
+    const posArray = new Float32Array(particleCount * 3);
+    const colorArray = new Float32Array(particleCount * 3);
+
+    for(let i = 0; i < particleCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 10;
+      colorArray[i] = Math.random();
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.02,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 3;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      particlesMesh.rotation.x += 0.0005;
+      particlesMesh.rotation.y += 0.0005;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Typed.js for rotating text
+    new Typed('#rotating-text', {
+      strings: ['Web Developer & Digital Marketer', 'Full-Stack Engineer', 'Tech Consultant', 'Digital Solutions Expert'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    // GSAP animations
+    gsap.from('nav', { 
+      opacity: 0, 
+      y: -50, 
+      duration: 1, 
+      ease: 'power3.out' 
+    });
+
+    gsap.from('h1', { 
+      opacity: 0, 
+      y: 50, 
+      duration: 1, 
+      delay: 0.3, 
+      ease: 'power3.out' 
+    });
+
+    gsap.from('#rotating-text', { 
+      opacity: 0, 
+      duration: 1, 
+      delay: 0.6, 
+      ease: 'power3.out' 
+    });
+
+    gsap.from('section', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    });
+  </script>
+</body>
+</html>
