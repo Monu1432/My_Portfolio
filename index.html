@@ -18,6 +18,198 @@
     .gradient-text { background: linear-gradient(90deg, #3b82f6, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
     .project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
+    
+    /* New Hero Section Styles */
+    .hero-gradient-bg {
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    }
+    
+    .floating-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .floating-bg div {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      animation: float 15s infinite linear;
+    }
+    
+    .floating-bg div:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 5%;
+    }
+    
+    .floating-bg div:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 80%;
+      animation-delay: 2s;
+    }
+    
+    .floating-bg div:nth-child(3) {
+      width: 150px;
+      height: 150px;
+      top: 80%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+    
+    .floating-bg div:nth-child(4) {
+      width: 250px;
+      height: 250px;
+      top: 30%;
+      left: 60%;
+      animation-delay: 6s;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-50px) rotate(180deg);
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
+    }
+    
+    .profile-card {
+      width: 300px;
+      height: 380px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s ease;
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .profile-card:hover {
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4);
+    }
+    
+    .profile-card:hover::before {
+      left: 100%;
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      border: 5px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-name {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .profile-title {
+      color: #00dbde;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #00dbde, #fc00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #2563eb, #7c3aed);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    .mobile-menu-button {
+     background: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     transition: all 0.3s ease;
+     }
+
+    .mobile-menu-button:hover {
+     background: rgba(255, 255, 255, 0.2);
+     transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="bg-[#0f172a] text-white font-sans overflow-x-hidden">
@@ -25,34 +217,84 @@
   <canvas id="bgCanvas" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
   
   <!-- Navigation -->
-  <nav class="fixed w-full py-6 px-8 flex justify-between items-center glass-card z-50">
-    <div class="text-2xl font-bold gradient-text">Novajps</div>
-    <div class="hidden md:flex gap-8">
-      <a href="services.html" class="hover:text-blue-400 transition">Services</a>
-      <a href="work.html" class="hover:text-blue-400 transition">Work</a>
-      <a href="#testimonials" class="hover:text-blue-400 transition">Clients</a>
-      <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
-    </div>
-    <button class="md:hidden">☰</button>
-  </nav>
+  <!-- Navigation -->
+<nav class="fixed w-full py-6 px-8 flex justify-between items-center glass-card z-50">
+  <div class="text-2xl font-bold gradient-text">Novajps</div>
+  <div class="hidden md:flex gap-8">
+    <a href="services.html" class="hover:text-blue-400 transition">Services</a>
+    <a href="work.html" class="hover:text-blue-400 transition">Work</a>
+    <a href="#testimonials" class="hover:text-blue-400 transition">Clients</a>
+    <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+  </div>
+  <button id="mobile-menu-button" class="md:hidden w-10 h-10 glass-card rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
+    <span class="text-lg">☰</span>
+  </button>
+</nav>
 
   <main class="max-w-7xl mx-auto px-4 pt-24">
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center pt-20">
-      <div class="relative z-10">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Manoranjan Kumar Monu</h1>
-        <div class="text-2xl md:text-4xl font-light mb-8">
-          <span id="rotating-text"></span>
-        </div>
-        <div class="flex gap-4">
-          <button class="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all" onclick="window.location.href='hire.html'">
-            Hire Me
-          </button>
-          <button class="px-8 py-3 glass-card rounded-full font-medium hover:bg-white/20 transition-all" onclick="window.location.href='work.html'">
-            View Work
-          </button>
+    <!-- Updated Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 hero-gradient-bg relative overflow-hidden">
+      <div class="floating-bg">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="hero-content md:w-1/2 mb-12 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+              <span class="gradient-text">Manoranjan Kumar Monu</span>
+            </h1>
+            
+            <div class="text-xl md:text-2xl font-light mb-8">
+              <span id="rotating-text"></span>
+            </div>
+            
+            <p class="text-lg text-white/80 mb-10">
+              I am an IT professional and freelancer specializing in web development and digital solutions, with experience delivering projects across multiple industries. Currently working independently while seeking opportunities to contribute my skills in a dynamic organization.
+            </p>
+            
+            <div class="hero-buttons flex flex-col sm:flex-row gap-4">
+              <a href="hire.html" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Hire Me
+              </a>
+              <a href="Manoranjan_Kumar_Monu_Resume.pdf" download="Manoranjan_Kumar_Monu_Resume.pdf" class="btn btn-secondary">
+                <i class="fas fa-download"></i> Download Resume
+              </a>
+            </div>
+          </div>
+          
+          <div class="hero-image md:w-1/2 flex justify-center">
+            <div class="profile-card">
+              <img src="monu.png" alt="Profile" class="profile-img">
+              <h2 class="profile-name">Manoranjan Kumar Monu</h2>
+              <p class="profile-title">Full Stack Developer</p>
+              
+              <div class="profile-stats">
+                <div class="stat">
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">1+</div>
+                  <div class="stat-label">Years</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">4</div>
+                  <div class="stat-label">Clients</div>
+                </div>
+                
+              </div>
+
+            </div>
+            
+          </div>
+        <p class="text-lg text-white/80 mb-10"> </p>  
         </div>
       </div>
+
     </section>
 
     <!-- Services Section -->
@@ -472,6 +714,47 @@
         toggleActions: 'play none none none'
       }
     });
+    
+    // 3D tilt effect for profile card
+    document.addEventListener('mousemove', (e) => {
+      const card = document.querySelector('.profile-card');
+      if (!card) return;
+      
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const angleX = (y - centerY) / 25;
+      const angleY = (centerX - x) / 25;
+      
+      card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
+    });
+
+    // Reset rotation when mouse leaves
+    document.querySelector('.hero-image').addEventListener('mouseleave', () => {
+      const card = document.querySelector('.profile-card');
+      if (card) {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      }
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const navLinks = document.querySelector('nav > div:not(.gradient-text)');
+
+   mobileMenuButton.addEventListener('click', () => {
+    navLinks.classList.toggle('hidden');
+    navLinks.classList.toggle('flex');
+    navLinks.classList.toggle('absolute');
+    navLinks.classList.toggle('top-full');
+    navLinks.classList.toggle('left-0');
+    navLinks.classList.toggle('w-full');
+    navLinks.classList.toggle('flex-col');
+    navLinks.classList.toggle('bg-[#0f172a]');
+    navLinks.classList.toggle('p-4');
+    navLinks.classList.toggle('glass-card');
+  });
   </script>
 </body>
 </html>
