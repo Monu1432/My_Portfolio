@@ -40,6 +40,36 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
+    
+    /* Mobile menu styles */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-orb-container {
+        height: 300px !important;
+        margin-top: 2rem;
+      }
+      .service-3d-container {
+        height: 300px !important;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .service-features {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#0f172a] text-white font-sans overflow-x-hidden">
@@ -48,41 +78,69 @@
   <canvas id="bgCanvas" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
 
   <!-- Navigation -->
-  <nav class="fixed w-full py-4 px-6 glass-panel z-50">
+  <nav class="fixed w-full py-4 px-4 md:px-6 glass-panel z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold gradient-text">DA</a>
-      <div class="hidden md:flex gap-8">
+      <a href="index.html" class="text-2xl font-bold gradient-text">NovaJPS</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex gap-6 lg:gap-8">
         <a href="index.html" class="hover:text-blue-400 transition">Home</a>
         <a href="work.html" class="hover:text-blue-400 transition">Work</a>
         <a href="services.html" class="text-blue-400 font-medium">Services</a>
         <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
       </div>
-      <a href="contact.html" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-xl w-10 h-10 flex items-center justify-center">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+      
+      <!-- Get Started Button (hidden on mobile) -->
+      <a href="contact.html" class="hidden md:inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
         Get Started
       </a>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-[#0f172a] glass-panel p-6 md:hidden z-50">
+      <div class="flex justify-between items-center mb-10">
+        <a href="index.html" class="text-2xl font-bold gradient-text">DA</a>
+        <button id="close-menu" class="text-xl w-10 h-10 flex items-center justify-center">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="flex flex-col gap-6">
+        <a href="index.html" class="text-lg hover:text-blue-400 transition">Home</a>
+        <a href="work.html" class="text-lg hover:text-blue-400 transition">Work</a>
+        <a href="services.html" class="text-lg text-blue-400 font-medium">Services</a>
+        <a href="contact.html" class="text-lg hover:text-blue-400 transition">Contact</a>
+        <a href="contact.html" class="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all text-center">
+          Get Started
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center pt-20 px-6 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96">
+  <section class="min-h-screen flex flex-col justify-center items-center pt-20 px-4 md:px-6 relative overflow-hidden">
+    <div class="hero-orb-container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 mt-16 md:mt-0">
       <!-- 3D Service Orb will be inserted here by JavaScript -->
     </div>
-    <div class="max-w-7xl mx-auto relative z-10">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-center">
+    <div class="max-w-7xl mx-auto relative z-10 text-center mt-16 md:mt-0">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
         <span class="gradient-text">Explore</span> Our Services
       </h1>
-      <p class="text-xl text-white/80 mb-8 text-center max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-white/80 mb-8 max-w-3xl mx-auto px-4">
         Interactive showcase of our comprehensive digital solutions
       </p>
-      <div class="flex justify-center gap-4">
-        <a href="#web-dev" class="px-6 py-2 glass-panel rounded-full font-medium hover:bg-blue-500/10 transition border border-blue-400/30">
+      <div class="flex flex-wrap justify-center gap-3 px-2">
+        <a href="#web-dev" class="px-4 sm:px-6 py-2 glass-panel rounded-full font-medium hover:bg-blue-500/10 transition border border-blue-400/30 text-sm sm:text-base">
           Web Development
         </a>
-        <a href="#digital-marketing" class="px-6 py-2 glass-panel rounded-full font-medium hover:bg-pink-500/10 transition border border-pink-400/30">
+        <a href="#digital-marketing" class="px-4 sm:px-6 py-2 glass-panel rounded-full font-medium hover:bg-pink-500/10 transition border border-pink-400/30 text-sm sm:text-base">
           Digital Marketing
         </a>
-        <a href="#custom-software" class="px-6 py-2 glass-panel rounded-full font-medium hover:bg-purple-500/10 transition border border-purple-400/30">
+        <a href="#custom-software" class="px-4 sm:px-6 py-2 glass-panel rounded-full font-medium hover:bg-purple-500/10 transition border border-purple-400/30 text-sm sm:text-base">
           Custom Software
         </a>
       </div>
@@ -90,24 +148,24 @@
   </section>
 
   <!-- Web Development Service -->
-  <section id="web-dev" class="py-32 px-6 relative">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div class="relative h-96 w-full">
+  <section id="web-dev" class="py-20 md:py-32 px-4 md:px-6 relative">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div class="service-3d-container relative h-80 sm:h-96 w-full order-2 md:order-1">
         <!-- 3D Web Dev Visualization -->
         <div id="web-dev-3d" class="absolute inset-0"></div>
         <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-500/20 rounded-full filter blur-3xl -z-10"></div>
       </div>
-      <div>
+      <div class="order-1 md:order-2">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl">
             💻
           </div>
-          <h2 class="text-3xl font-bold gradient-text">Web Development</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold gradient-text">Web Development</h2>
         </div>
-        <p class="text-xl text-white/80 mb-6">
+        <p class="text-lg sm:text-xl text-white/80 mb-6">
           We craft high-performance websites and web applications that drive engagement and conversions.
         </p>
-        <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 service-features">
           <div class="glass-panel p-4 rounded-lg">
             <h3 class="font-bold text-blue-400 mb-2">Custom Websites</h3>
             <p class="text-sm text-white/80">Tailored solutions for your unique business needs</p>
@@ -125,7 +183,7 @@
             <p class="text-sm text-white/80">Easy-to-manage content systems</p>
           </div>
         </div>
-        <a href="schedule.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+        <a href="schedule.html" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all text-sm sm:text-base">
           Start Your Project
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -136,24 +194,24 @@
   </section>
 
   <!-- Digital Marketing Service -->
-  <section id="digital-marketing" class="py-32 px-6 bg-gradient-to-b from-[#0f172a] to-[#020617] relative">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div class="order-1 md:order-2 relative h-96 w-full">
+  <section id="digital-marketing" class="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-[#0f172a] to-[#020617] relative">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div class="relative h-80 sm:h-96 w-full order-2">
         <!-- 3D Marketing Visualization -->
         <div id="marketing-3d" class="absolute inset-0"></div>
         <div class="absolute -top-6 -right-6 w-32 h-32 bg-pink-500/20 rounded-full filter blur-3xl -z-10"></div>
       </div>
-      <div class="order-2 md:order-1">
+      <div class="order-1">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl">
             📈
           </div>
-          <h2 class="text-3xl font-bold gradient-text">Digital Marketing</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold gradient-text">Digital Marketing</h2>
         </div>
-        <p class="text-xl text-white/80 mb-6">
+        <p class="text-lg sm:text-xl text-white/80 mb-6">
           Data-driven strategies to amplify your online presence and generate quality leads.
         </p>
-        <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 service-features">
           <div class="glass-panel p-4 rounded-lg">
             <h3 class="font-bold text-pink-400 mb-2">SEO</h3>
             <p class="text-sm text-white/80">Organic growth that lasts</p>
@@ -171,7 +229,7 @@
             <p class="text-sm text-white/80">Compelling storytelling</p>
           </div>
         </div>
-        <a href="schedule.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg font-medium hover:shadow-lg hover:shadow-pink-500/30 transition-all">
+        <a href="#" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg font-medium hover:shadow-lg hover:shadow-pink-500/30 transition-all text-sm sm:text-base">
           Boost Your Visibility
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -182,24 +240,24 @@
   </section>
 
   <!-- Custom Software Service -->
-  <section id="custom-software" class="py-32 px-6 relative">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div class="relative h-96 w-full">
+  <section id="custom-software" class="py-20 md:py-32 px-4 md:px-6 relative">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div class="service-3d-container relative h-80 sm:h-96 w-full order-2 md:order-1">
         <!-- 3D Software Visualization -->
         <div id="software-3d" class="absolute inset-0"></div>
         <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-500/20 rounded-full filter blur-3xl -z-10"></div>
       </div>
-      <div>
+      <div class="order-1 md:order-2">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl">
             ⚙️
           </div>
-          <h2 class="text-3xl font-bold gradient-text">Custom Software</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold gradient-text">Custom Software</h2>
         </div>
-        <p class="text-xl text-white/80 mb-6">
+        <p class="text-lg sm:text-xl text-white/80 mb-6">
           Bespoke solutions that automate processes and solve complex business challenges.
         </p>
-        <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 service-features">
           <div class="glass-panel p-4 rounded-lg">
             <h3 class="font-bold text-purple-400 mb-2">SaaS Products</h3>
             <p class="text-sm text-white/80">Scalable cloud solutions</p>
@@ -217,7 +275,7 @@
             <p class="text-sm text-white/80">Actionable insights</p>
           </div>
         </div>
-        <a href="contact.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all">
+        <a href="#" class="inline-flex items-center px-5 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all text-sm sm:text-base">
           Build Your Solution
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -228,77 +286,77 @@
   </section>
 
   <!-- Tech Stack Section -->
-  <section class="py-20 px-6 bg-gradient-to-b from-[#020617] to-[#0f172a]">
+  <section class="py-16 md:py-20 px-4 md:px-6 bg-gradient-to-b from-[#020617] to-[#0f172a]">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-16 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-12 md:mb-16 text-center">
         Our <span class="gradient-text">Technology Stack</span>
       </h2>
       
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 tech-grid">
         <!-- Tech Item 1 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-blue-400">🅰️</span>
           </div>
-          <h3 class="font-bold">Angular</h3>
+          <h3 class="font-bold text-sm sm:text-base">Angular</h3>
         </div>
         
         <!-- Tech Item 2 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-blue-400">⚛️</span>
           </div>
-          <h3 class="font-bold">React</h3>
+          <h3 class="font-bold text-sm sm:text-base">React</h3>
         </div>
         
         <!-- Tech Item 3 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-green-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-green-400">🟩</span>
           </div>
-          <h3 class="font-bold">Node.js</h3>
+          <h3 class="font-bold text-sm sm:text-base">Node.js</h3>
         </div>
         
         <!-- Tech Item 4 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-yellow-400">🐘</span>
           </div>
-          <h3 class="font-bold">PHP</h3>
+          <h3 class="font-bold text-sm sm:text-base">PHP</h3>
         </div>
         
         <!-- Tech Item 5 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-blue-400">🗄️</span>
           </div>
-          <h3 class="font-bold">MySQL</h3>
+          <h3 class="font-bold text-sm sm:text-base">MySQL</h3>
         </div>
         
         <!-- Tech Item 6 -->
-        <div class="tech-item glass-panel p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
-          <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center text-3xl mb-4">
+        <div class="tech-item glass-panel p-4 sm:p-6 rounded-xl flex flex-col items-center hover:transform hover:scale-105 transition-all">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-green-500/10 rounded-full flex items-center justify-center text-xl sm:text-3xl mb-3 sm:mb-4">
             <span class="text-green-400">🍃</span>
           </div>
-          <h3 class="font-bold">MongoDB</h3>
+          <h3 class="font-bold text-sm sm:text-base">MongoDB</h3>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-32 px-6 relative overflow-hidden">
+  <section class="py-20 md:py-32 px-4 md:px-6 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 to-pink-500/10 rounded-3xl transform rotate-6 scale-105 -z-10"></div>
     <div class="max-w-4xl mx-auto text-center relative z-10">
-      <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
-      <p class="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
+      <p class="text-lg sm:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
         Let's discuss how we can help you achieve your business goals with our cutting-edge solutions.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all text-lg">
+        <a href="schedule.html" class="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all text-base sm:text-lg">
           Schedule a Consultation
         </a>
-        <a href="tel:+91 9801348784" class="px-8 py-4 glass-panel rounded-full font-medium hover:bg-white/10 transition text-lg">
+        <a href="tel:+919801348784" class="px-6 py-3 sm:px-8 sm:py-4 glass-panel rounded-full font-medium hover:bg-white/10 transition text-base sm:text-lg">
           Call Us Now
         </a>
       </div>
@@ -306,32 +364,32 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-12 px-6 bg-[#020617]">
+  <footer class="py-12 px-4 md:px-6 bg-[#020617]">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-4 gap-8 mb-8">
         <div>
           <h3 class="text-xl font-bold mb-4 gradient-text">Digital Agency</h3>
-          <p class="text-white/80 mb-4">
+          <p class="text-white/80 mb-4 text-sm sm:text-base">
             Creating innovative digital experiences that drive results.
           </p>
           <div class="flex gap-4">
-            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-blue-500/20 transition">
-              <span class="fab fa-linkedin-in text-lg"></span>
+            <a href="https://www.linkedin.com/in/manoranjan-kumar-monu-a39065223/" class="w-8 h-8 sm:w-10 sm:h-10 glass-panel rounded-full flex items-center justify-center hover:bg-blue-500/20 transition text-sm">
+              <span class="fab fa-linkedin-in"></span>
             </a>
-            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-pink-500/20 transition">
-              <span class="fab fa-instagram text-lg"></span>
+            <a href="https://www.instagram.com/m_s__kushwaha?igsh=YWpwNm13dGdtYzVl" class="w-8 h-8 sm:w-10 sm:h-10 glass-panel rounded-full flex items-center justify-center hover:bg-pink-500/20 transition text-sm">
+              <span class="fab fa-instagram"></span>
             </a>
-            <a href="https://github.com/Monu1432" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
+            <a href="https://github.com/Monu1432" class="w-8 h-8 sm:w-10 sm:h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition text-sm">
               <span class="fab fa-github"></span>
             </a>
-            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition">
-              <span class="fab fa-twitter text-lg"></span>
+            <a href="https://x.com/Mk_Monu_9801?t=v9TshtiRfF3jDn4h_rnOfg&s=09" class="w-8 h-8 sm:w-10 sm:h-10 glass-panel rounded-full flex items-center justify-center hover:bg-purple-500/20 transition text-sm">
+              <span class="fab fa-twitter"></span>
             </a>
           </div>
         </div>
         <div>
-          <h4 class="font-bold mb-4">Services</h4>
-          <ul class="space-y-2 text-white/80">
+          <h4 class="font-bold mb-4 text-sm sm:text-base">Services</h4>
+          <ul class="space-y-2 text-white/80 text-sm sm:text-base">
             <li><a href="#web-dev" class="hover:text-blue-400 transition">Web Development</a></li>
             <li><a href="#digital-marketing" class="hover:text-pink-400 transition">Digital Marketing</a></li>
             <li><a href="#custom-software" class="hover:text-purple-400 transition">Custom Software</a></li>
@@ -339,17 +397,17 @@
           </ul>
         </div>
         <div>
-          <h4 class="font-bold mb-4">Quick Links</h4>
-          <ul class="space-y-2">
-            <li><a href="services.html" class="hover:text-blue-400 transition">Services</a></li>
-            <li><a href="work.html" class="hover:text-blue-400 transition">Work</a></li>
-            <li><a href="#testimonials" class="hover:text-blue-400 transition">Testimonials</a></li>
-            <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+          <h4 class="font-bold mb-4 text-sm sm:text-base">Company</h4>
+          <ul class="space-y-2 text-white/80 text-sm sm:text-base">
+            <li><a href="about.html" class="hover:text-blue-400 transition">About Us</a></li>
+            <li><a href="work.html" class="hover:text-blue-400 transition">Our Work</a></li>
+            <li><a href="blog.html" class="hover:text-blue-400 transition">Blog</a></li>
+            <li><a href="careers.html" class="hover:text-blue-400 transition">Careers</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold mb-4">Contact</h4>
-          <ul class="space-y-2 text-white/80">
+          <h4 class="font-bold mb-4 text-sm sm:text-base">Contact</h4>
+          <ul class="space-y-2 text-white/80 text-sm sm:text-base">
             <li>NovaJPS</li>
             <li>Noida, IN</li>
             <li>monussiingh@gmail.com</li>
@@ -357,13 +415,38 @@
           </ul>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 text-center text-white/50">
+      <div class="border-t border-white/10 pt-8 text-center text-white/50 text-sm sm:text-base">
         <p>© 2025 NovaJPS. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('active') && 
+          !mobileMenu.contains(e.target) && 
+          e.target !== mobileMenuButton) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
     // Three.js Background
     const bgCanvas = document.getElementById('bgCanvas');
     const scene = new THREE.Scene();
@@ -460,7 +543,7 @@
     const heroCamera = new THREE.PerspectiveCamera(75, heroContainer.clientWidth/heroContainer.clientHeight, 0.1, 1000);
     const heroRenderer = new THREE.WebGLRenderer({ alpha: true });
     heroRenderer.setSize(heroContainer.clientWidth, heroContainer.clientHeight);
-    document.querySelector('.absolute.top-1\\/2.left-1\\/2').appendChild(heroRenderer.domElement);
+    document.querySelector('.hero-orb-container').appendChild(heroRenderer.domElement);
 
     // Create service orb
     const orbGeometry = new THREE.SphereGeometry(2, 32, 32);
@@ -715,12 +798,22 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // Close mobile menu if open
+          if (mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+          }
+          
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
 </body>
-
 </html>
