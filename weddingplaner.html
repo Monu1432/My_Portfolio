@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blissful Weddings - Your Perfect Day, Perfectly Planned</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f8e1f4;
+            --secondary: #d4a5c1;
+            --accent: #a2678a;
+            --dark: #4a3041;
+            --light: #fff9fc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-content .btn {
+            animation: fadeIn 1s ease 0.6s both;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--primary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .service-price {
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .service-features {
+            margin: 15px 0;
+            list-style-type: none;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--primary);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--accent);
+        }
+        
+        .pricing-card.featured .pricing-header {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-header {
+            background: var(--secondary);
+            padding: 25px;
+            color: var(--dark);
+        }
+        
+        .pricing-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-period {
+            font-size: 16px;
+            color: rgba(0,0,0,0.7);
+        }
+        
+        .pricing-features {
+            padding: 25px;
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-card .btn {
+            margin-bottom: 25px;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 48, 65, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: white;
+            font-size: 14px;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+        
+        .lightbox-nav button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .lightbox-nav button:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--primary);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .testimonial.active {
+            opacity: 1;
+        }
+        
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial h4 {
+            margin-bottom: 5px;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: var(--accent);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                margin-bottom: 10px;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+            
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-slider {
+                height: 400px;
+            }
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+        
+        .countdown-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-heart"></i>Blissful<span>Weddings</span></a>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Your Perfect Day, Perfectly Planned</h1>
+            <p>We create unforgettable wedding experiences with attention to every detail, ensuring your special day is exactly as you dreamed.</p>
+            <a href="#contact" class="btn">Plan Your Wedding</a>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive wedding planning solutions tailored to your vision</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=jpg&q=60&w=3000');"></div>
+                    <div class="service-content">
+                        <h3>Full Wedding Planning</h3>
+                        <div class="service-price">Starting at $5,000</div>
+                        <p>Comprehensive planning from concept to execution. We handle every detail so you can enjoy the journey.</p>
+                        <ul class="service-features">
+                            <li>Initial consultation & vision development</li>
+                            <li>Vendor selection & management</li>
+                            <li>Budget planning & tracking</li>
+                            <li>Timeline creation & day-of coordination</li>
+                            <li>Unlimited planning meetings</li>
+                        </ul>
+                        <a href="#contact" class="btn">Get Quote</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Day-of Coordination</h3>
+                        <div class="service-price">Starting at $1,500</div>
+                        <p>We take charge on your wedding day to ensure everything runs smoothly according to plan.</p>
+                        <ul class="service-features">
+                            <li>Two pre-wedding consultations</li>
+                            <li>Vendor coordination & management</li>
+                            <li>Timeline execution</li>
+                            <li>Problem-solving on wedding day</li>
+                            <li>Setup & breakdown coordination</li>
+                        </ul>
+                        <a href="#contact" class="btn">Get Quote</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Vendor Management</h3>
+                        <div class="service-price">Starting at $2,500</div>
+                        <p>We connect you with the best vendors and manage all communications and coordination.</p>
+                        <ul class="service-features">
+                            <li>Vendor research & recommendations</li>
+                            <li>Contract review & negotiations</li>
+                            <li>Payment scheduling</li>
+                            <li>Vendor coordination meetings</li>
+                            <li>Day-of vendor management</li>
+                        </ul>
+                        <a href="#contact" class="btn">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wedding Packages</h2>
+                <p>Choose the package that fits your needs and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Essential</h3>
+                        <div class="pricing-price">$1,200</div>
+                        <div class="pricing-period">One-time fee</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Initial consultation</li>
+                        <li>Vendor recommendations</li>
+                        <li>Budget planning template</li>
+                        <li>Timeline creation</li>
+                        <li>2 planning meetings</li>
+                        <li>Day-of coordination</li>
+                    </ul>
+                    <a href="#contact" class="btn">Select Plan</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3>Deluxe</h3>
+                        <div class="pricing-price">$3,500</div>
+                        <div class="pricing-period">One-time fee</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>All Essential features</li>
+                        <li>Full vendor management</li>
+                        <li>Unlimited planning meetings</li>
+                        <li>Design concept development</li>
+                        <li>Venue selection assistance</li>
+                        <li>RSVP management</li>
+                        <li>Rehearsal coordination</li>
+                    </ul>
+                    <a href="#contact" class="btn">Select Plan</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">$6,000</div>
+                        <div class="pricing-period">One-time fee</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>All Deluxe features</li>
+                        <li>Custom design development</li>
+                        <li>Honeymoon planning assistance</li>
+                        <li>Multiple venue visits</li>
+                        <li>Guest accommodation coordination</li>
+                        <li>Post-wedding brunch planning</li>
+                        <li>Priority scheduling</li>
+                    </ul>
+                    <a href="#contact" class="btn">Select Plan</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <p>All packages can be customized to your specific needs. <a href="#contact" style="color: var(--accent); font-weight: 600;">Contact us</a> for a personalized quote.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p>A glimpse of the beautiful weddings we've orchestrated</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beach Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Beach Wedding</h3>
+                        <p>Sarah & Michael - Malibu, CA</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1444842741774-771cf4455a78?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Garden Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Garden Wedding</h3>
+                        <p>Emily & David - Portland, OR</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Traditional Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Traditional Wedding</h3>
+                        <p>James & Maria - Charleston, SC</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modern Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Modern Wedding</h3>
+                        <p>Alex & Taylor - New York, NY</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1460364157757-928547333035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Destination Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Destination Wedding</h3>
+                        <p>Chris & Jordan - Tuscany, Italy</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intimate Wedding" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Intimate Wedding</h3>
+                        <p>Ryan & Ashley - Aspen, CO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img src="" alt="" class="lightbox-img">
+            <div class="lightbox-nav">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Happy Couples</h2>
+                <p>What our clients say about their experience</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sarah Johnson">
+                    <p>"Blissful Weddings made our dream wedding a reality. Their attention to detail and seamless coordination allowed us to truly enjoy our special day without any stress. The pricing was transparent and worth every penny!"</p>
+                    <h4>Sarah & Michael Johnson</h4>
+                    <span>June 2023</span>
+                </div>
+                <div class="testimonial">
+                    <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Emily Chen">
+                    <p>"We couldn't have asked for a better planning experience. The team was professional, creative, and understood our vision perfectly. Our wedding was absolutely magical! The Deluxe package was perfect for our needs."</p>
+                    <h4>Emily & David Chen</h4>
+                    <span>August 2023</span>
+                </div>
+                <div class="testimonial">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="James Rodriguez">
+                    <p>"From the initial consultation to the final toast, everything was handled with expertise and care. Our guests are still talking about how beautiful and well-organized our wedding was. The vendor management service saved us so much time!"</p>
+                    <h4>James & Maria Rodriguez</h4>
+                    <span>October 2023</span>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's start planning your perfect day together</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Office</h4>
+                            <p>123 Wedding Lane, Suite 101<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p>info@blissfulweddings.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="wedding-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                            <select required>
+                                <option value="" disabled selected>Interested Service</option>
+                                <option value="full-planning">Full Wedding Planning</option>
+                                <option value="day-coordination">Day-of Coordination</option>
+                                <option value="vendor-management">Vendor Management</option>
+                                <option value="essential">Essential Package</option>
+                                <option value="deluxe">Deluxe Package</option>
+                                <option value="premium">Premium Package</option>
+                                <option value="custom">Custom Package</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Wedding Date" onfocus="(this.type='date')">
+                            <input type="text" placeholder="Estimated Guest Count">
+                        </div>
+                        <input type="text" placeholder="Estimated Budget">
+                        <textarea placeholder="Tell us about your vision..." required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                    <div class="success-message" id="success-message">
+                        Thank you for your inquiry! We will contact you shortly to discuss your wedding plans.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Blissful Weddings</h3>
+                    <p>Creating unforgettable wedding experiences with attention to every detail, ensuring your special day is exactly as you dreamed.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Full Wedding Planning</a></li>
+                        <li><a href="#services">Day-of Coordination</a></li>
+                        <li><a href="#services">Vendor Management</a></li>
+                        <li><a href="#pricing">Budget Planning</a></li>
+                        <li><a href="#pricing">Destination Weddings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for wedding tips and special offers.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Blissful Weddings. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'white';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Testimonial Slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                showTestimonial(index);
+            });
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            let nextIndex = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(nextIndex);
+        }, 5000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .hero-content a.btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').classList.remove('active');
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('wedding-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            // Set your wedding date here (year, month-1, day, hour, minute, second)
+            const weddingDate = new Date(2024, 5, 15, 18, 0, 0).getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.querySelector('.countdown').innerHTML = '<p>The wedding has passed! Congratulations to the happy couple!</p>';
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Lightbox functionality
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.querySelector('.lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        let currentImageIndex = 0;
+        const portfolioImages = Array.from(portfolioItems).map(item => item.querySelector('img').src);
+        
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                lightboxImg.src = portfolioImages[currentImageIndex];
+                lightbox.style.display = 'flex';
+            });
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+        
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + portfolioImages.length) % portfolioImages.length;
+            lightboxImg.src = portfolioImages[currentImageIndex];
+        });
+        
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % portfolioImages.length;
+            lightboxImg.src = portfolioImages[currentImageIndex];
+        });
+        
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                } else if (e.key === 'ArrowLeft') {
+                    lightboxPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    lightboxNext.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
